@@ -87,11 +87,8 @@ export const categories = [
 ];
 
 export const sources = [
-  'All Sources',
-  'Tech News Daily',
-  'Global News Network',
-  'Health Today',
-  'Finance Wire',
-  'Space News',
-  'Energy Today'
+  "All Sources",
+  "NewsAPI",
+  "The Guardian",
+  "New York Times",
 ];

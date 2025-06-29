@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { X, Settings } from 'lucide-react';
-import { UserPreferences } from '../types';
-import { categories, sources } from '../data/mockData';
+import React, { useState } from "react";
+import { X, Settings } from "lucide-react";
+import { UserPreferences } from "../types";
+import { categories, sources } from "../data/mockData";
 
 interface PreferencesModalProps {
   isOpen: boolean;
@@ -14,7 +14,7 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({
   isOpen,
   onClose,
   preferences,
-  onPreferencesChange
+  onPreferencesChange,
 }) => {
   const [localPreferences, setLocalPreferences] = useState(preferences);
 
@@ -25,21 +25,29 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({
     onClose();
   };
 
+  const handleClear = () => {
+    setLocalPreferences({
+      categories: [],
+      sources: [],
+      authors: [],
+    });
+  };
+
   const toggleCategory = (category: string) => {
-    setLocalPreferences(prev => ({
+    setLocalPreferences((prev) => ({
       ...prev,
       categories: prev.categories.includes(category)
-        ? prev.categories.filter(c => c !== category)
-        : [...prev.categories, category]
+        ? prev.categories.filter((c) => c !== category)
+        : [...prev.categories, category],
     }));
   };
 
   const toggleSource = (source: string) => {
-    setLocalPreferences(prev => ({
+    setLocalPreferences((prev) => ({
       ...prev,
       sources: prev.sources.includes(source)
-        ? prev.sources.filter(s => s !== source)
-        : [...prev.sources, source]
+        ? prev.sources.filter((s) => s !== source)
+        : [...prev.sources, source],
     }));
   };
 
@@ -47,7 +55,7 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         {/* Backdrop */}
-        <div 
+        <div
           className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-75"
           onClick={onClose}
         />
@@ -77,19 +85,24 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({
                 Preferred Categories
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {categories.filter(cat => cat !== 'All Categories').map(category => (
-                  <label key={category} className="flex items-center space-x-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={localPreferences.categories.includes(category)}
-                      onChange={() => toggleCategory(category)}
-                      className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-700"
-                    />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
-                      {category}
-                    </span>
-                  </label>
-                ))}
+                {categories
+                  .filter((cat) => cat !== "All Categories")
+                  .map((category) => (
+                    <label
+                      key={category}
+                      className="flex items-center space-x-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={localPreferences.categories.includes(category)}
+                        onChange={() => toggleCategory(category)}
+                        className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-700"
+                      />
+                      <span className="text-sm text-gray-700 dark:text-gray-300">
+                        {category}
+                      </span>
+                    </label>
+                  ))}
               </div>
             </div>
 
@@ -99,25 +112,36 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({
                 Preferred Sources
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {sources.filter(source => source !== 'All Sources').map(source => (
-                  <label key={source} className="flex items-center space-x-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={localPreferences.sources.includes(source)}
-                      onChange={() => toggleSource(source)}
-                      className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-700"
-                    />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
-                      {source}
-                    </span>
-                  </label>
-                ))}
+                {sources
+                  .filter((source) => source !== "All Sources")
+                  .map((source) => (
+                    <label
+                      key={source}
+                      className="flex items-center space-x-2 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={localPreferences.sources.includes(source)}
+                        onChange={() => toggleSource(source)}
+                        className="rounded border-gray-300 dark:border-gray-600 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-700"
+                      />
+                      <span className="text-sm text-gray-700 dark:text-gray-300">
+                        {source}
+                      </span>
+                    </label>
+                  ))}
               </div>
             </div>
           </div>
 
           {/* Actions */}
           <div className="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <button
+              onClick={handleClear}
+              className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              Clear
+            </button>
             <button
               onClick={onClose}
               className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"

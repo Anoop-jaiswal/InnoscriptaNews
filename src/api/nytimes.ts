@@ -1,37 +1,53 @@
-// import axios from "axios";
-// import { Article } from "../types/news";
-
-// const API_KEY = import.meta.env.VITE_NYTIMES_KEY;
-
-// export const fetchNYTimes = async (): Promise<Article[]> => {
-//   const { data } = await axios.get(
-//     `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`
-//   );
-
-//   return data.results.map((item: any) => ({
-//     title: item.title,
-//     description: item.abstract,
-//     url: item.url,
-//     urlToImage: item.multimedia?.[0]?.url || "",
-//     publishedAt: item.published_date,
-//     source: { name: "NYTimes" },
-//   }));
-// };
-
 import axios from "axios";
 import { Article } from "../types/news";
 
-export const fetchNYTimes = async (): Promise<Article[]> => {
-  const { data } = await axios.get(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
+const API_KEY = "f64c11605bc24fa78ed366b76c10f6f6";
 
-  return data.map((item: any) => ({
-    title: item.title,
-    description: item.body,
-    url: `https://jsonplaceholder.typicode.com/posts/${item.id}`,
-    urlToImage: "", // JSONPlaceholder doesn't provide images
-    publishedAt: new Date().toISOString(), // mock current date as placeholder
-    source: { name: "JSONPlaceholder" },
-  }));
+const categories = [
+  "Technology",
+  "Health",
+  "Business",
+  "Science",
+  "Environment",
+  "Sports",
+  "Entertainment",
+];
+
+export const fetchNYTimes = async (): Promise<Article[]> => {
+  const allArticles: Article[] = [];
+
+  for (const category of categories) {
+    const query = `new-york-times+${category.toLowerCase()}`;
+    const url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`;
+
+    try {
+      const { data } = await axios.get(url);
+
+      const articles: Article[] = (data.articles || []).map(
+        (item: any, index: number): Article => ({
+          id: `nytimes-${category}-${index}`,
+          title: item.title,
+          description: item.description || "",
+          content: item.content || "",
+          url: item.url,
+          imageUrl: item.urlToImage || "",
+          publishedAt: item.publishedAt,
+          source: {
+            name: "New York Times",
+          },
+          author: item.author || "Unknown",
+          category,
+        })
+      );
+
+      allArticles.push(...articles);
+    } catch (error) {
+      console.error(
+        `Failed to fetch NYT articles for category "${category}"`,
+        error
+      );
+    }
+  }
+
+  return allArticles;
 };
