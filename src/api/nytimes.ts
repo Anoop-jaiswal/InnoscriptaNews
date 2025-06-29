@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Article } from "../types/news";
 
-const API_KEY = "f64c11605bc24fa78ed366b76c10f6f6";
+const API_KEY = import.meta.env.VITE_NY_API_KEY ;
 
 const categories = [
   "Technology",

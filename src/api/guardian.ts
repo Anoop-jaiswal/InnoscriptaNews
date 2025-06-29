@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Article } from "../types/news";
 
-const API_KEY = "87e5e589-b6ce-4d8f-846b-d368825ece96";
+const API_KEY = import.meta.env.VITE_GUARDIAN_API_KEY;
 
 const sectionMap: Record<string, string> = {
   Technology: "technology",
