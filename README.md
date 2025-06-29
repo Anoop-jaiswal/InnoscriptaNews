@@ -133,3 +133,10 @@ docker run -p 5173:5173 anoopjaiswaldocker/innoscripta_news:v1
 ```bash
 http://localhost:5173
 ```
+5. **Stop the container:**
+```bash
+docker ps         
+```
+```bash
+docker stop <container_id>   
+```
