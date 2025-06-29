@@ -34,8 +34,6 @@ A fully responsive, fast, and modern News Aggregator built using **React**, **Vi
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
-
 ```text
 ├── public/              # Static assets like favicon, index.html, etc.
 ├── src/
@@ -93,3 +91,6 @@ npm run dev
 ```
 
 Visit the app at: [http://localhost:5173](http://localhost:5173)
+
+
+## 🐳 Running the App in a Docker Container
