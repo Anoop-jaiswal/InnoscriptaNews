@@ -94,3 +94,42 @@ Visit the app at: [http://localhost:5173](http://localhost:5173)
 
 
 ## 🐳 Running the App in a Docker Container
+
+
+## 📦 Docker Image
+
+The application is published as a Docker image on Docker Hub:
+
+👉 [Docker Hub – anoopjaiswaldocker/innoscripta_news](https://hub.docker.com/r/anoopjaiswaldocker/innoscripta_news)
+
+---
+
+## 🐳 Running the App in a Docker Container
+
+Follow these steps to run the app using Docker:
+
+### ✅ Prerequisites
+
+- Ensure **Docker Engine** is installed and running on your system.  
+  👉 [Install Docker](https://docs.docker.com/get-docker/)
+
+---
+
+### 🚀 Steps to Run
+
+1. **Open Terminal / Command Prompt**
+
+2. **Pull the Docker image from Docker Hub**
+
+```bash
+docker pull anoopjaiswaldocker/innoscripta_news:v1
+```
+
+3. **Run the Docker container with port forwarding**
+```bash
+docker run -p 5173:5173 anoopjaiswaldocker/innoscripta_news:v1
+```
+4. **Open your browser and visit:**
+```bash
+http://localhost:5173
+```
