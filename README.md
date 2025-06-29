@@ -34,3 +34,45 @@ A fully responsive, fast, and modern News Aggregator built using **React**, **Vi
 
 ## 📁 Project Structure
 
+├── public/ # Static assets like favicon, index.html, etc.
+├── src/
+│ ├── api/ # Axios clients and API functions
+│ ├── components/ # Reusable UI components
+│ ├── config/ # Global app configs (e.g. React Query client setup)
+│ ├── context/ # React context providers
+│ ├── hooks/ # Custom hooks (e.g. infinite scrolling)
+│ ├── pages/ # Page-level components
+│ ├── types/ # TypeScript interfaces and types
+│ ├── App.tsx # Main application wrapper
+│ └── main.tsx # Entry point
+├── .env # Environment variables
+├── Dockerfile # Docker build instructions
+├── vite.config.ts # Vite configuration
+└── README.md # Project documentation
+
+## 🧑‍💻 Getting Started – Local Development
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/news-app.git
+
+cd news-app
+
+2. Install dependencies
+npm install
+
+Configure Environment Variables
+
+3.Create a .env file in the root:
+touch .env
+
+Add your Guardian API key:
+
+VITE_NY_API_KEY='YOUR API KEY'
+VITE_GUARDIAN_API_KEY="YOUR API KEY"
+VITE_NEWS_API_KEY='YOUR API KEY'
+
+4. Start the development server
+npm run dev
+Then visit: http://localhost:5173
