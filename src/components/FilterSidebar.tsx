@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar, Tag, Globe, Filter } from 'lucide-react';
 import { FilterOptions } from '../types';
-import { categories, sources } from '../data/mockData';
+import { categories, sources } from "../types";
 
 interface FilterSidebarProps {
   filters: FilterOptions;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Filter, Grid, List, Calendar, Tag, Globe, X } from 'lucide-react';
 import { FilterOptions, ViewMode } from '../types';
-import { categories, sources } from '../data/mockData';
+import { categories, sources } from "../types";
 
 interface SearchAndFiltersProps {
   filters: FilterOptions;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { X, Settings } from "lucide-react";
 import { UserPreferences } from "../types";
-import { categories, sources } from "../data/mockData";
+import { categories, sources } from "../types";
 
 interface PreferencesModalProps {
   isOpen: boolean;

@@ -29,3 +29,21 @@ export interface UserPreferences {
 
 export type ViewMode = 'card' | 'row';
 export type Theme = 'light' | 'dark';
+
+export const categories = [
+  "All Categories",
+  "Technology",
+  "Health",
+  "Business",
+  "Science",
+  "Environment",
+  "Sports",
+  "Entertainment",
+];
+
+export const sources = [
+  "All Sources",
+  "NewsAPI",
+  "The Guardian",
+  "New York Times",
+];

@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({
               <Search className="w-5 h-5 text-white" />
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              NewsHub
+              Innoscripta News
             </h1>
           </div>
 

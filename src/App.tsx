@@ -8,11 +8,11 @@ import { FilterOptions, ViewMode, UserPreferences } from "./types";
 import { useAllNews } from "./hooks/useAllNews";
 import SkeletonCard from "./components/SkeletonCard";
 
-const INITIAL_VISIBLE_COUNT = 40;
+const INITIAL_VISIBLE_COUNT = 20;
 const LOAD_MORE_COUNT = 20;
 
 function App() {
-  const { data = [], isLoading, isError } = useAllNews();
+  const { data = [], isLoading } = useAllNews();
 
   const [filters, setFilters] = useState<FilterOptions>({
     keyword: "",
@@ -139,7 +139,6 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [personalizedArticles.length]);
 
-  // Reset visible count when filters or preferences change
   useEffect(() => {
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   }, [filters, preferences]);
@@ -162,34 +161,7 @@ function App() {
         </div>
 
         <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-          {isLoading && (
-            <div
-              className={
-                viewMode === "card"
-                  ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
-                  : "space-y-6"
-              }
-            >
-              {Array.from({ length: 9 }).map((_, index) =>
-                viewMode === "card" ? (
-                  <SkeletonCard key={index} />
-                ) : (
-                  <div
-                    key={index}
-                    className="h-20 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
-                  />
-                )
-              )}
-            </div>
-          )}
-
-          {isError && (
-            <p className="text-center text-red-500 dark:text-red-400 mb-4">
-              Failed to fetch articles. Please try again later.
-            </p>
-          )}
-
-          {!isLoading && !isError && (
+          {!isLoading && (
             <div className="mb-6">
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Showing {personalizedArticles.length} article
@@ -216,12 +188,11 @@ function App() {
               )}
             </div>
           ) : (
-            !isLoading &&
-            !isError && (
+            !isLoading && (
               <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-gray-600 mb-4">
+                <div className="text-gray-400 dark:text-gray-600 mb-4 flex items-center justify-center h-full">
                   <svg
-                    className="mx-auto h-12 w-12"
+                    className="mx-auto  my-12 h-12 w-12"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -243,6 +214,27 @@ function App() {
                 </p>
               </div>
             )
+          )}
+
+          {isLoading && (
+            <div
+              className={
+                viewMode === "card"
+                  ? "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+                  : "space-y-6"
+              }
+            >
+              {Array.from({ length: 9 }).map((_, index) =>
+                viewMode === "card" ? (
+                  <SkeletonCard key={index} />
+                ) : (
+                  <div
+                    key={index}
+                    className="h-20 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
+                  />
+                )
+              )}
+            </div>
           )}
         </main>
       </div>
