@@ -1,4 +1,4 @@
-# 📰 News App – React + TypeScript + Vite
+# 📰 Innoscripta News App – React + TypeScript + Vite
 
 A fully responsive, fast, and modern News Aggregator built using **React**, **Vite**, and **TypeScript**. It fetches the latest articles from The Guardian API and displays them in a clean UI using TailwindCSS and **TanStack React Query** for efficient data fetching, caching, and **infinite scrolling**.
 
@@ -58,8 +58,8 @@ A fully responsive, fast, and modern News Aggregator built using **React**, **Vi
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/news-app.git
-cd news-app
+git clone https://github.com/Anoop-jaiswal/InnoscriptaNews.git
+cd InnoscriptaNews
 ```
 
 ### 2. Install Dependencies
@@ -93,18 +93,17 @@ npm run dev
 Visit the app at: [http://localhost:5173](http://localhost:5173)
 
 
+---
+
 ## 🐳 Running the App in a Docker Container
 
 
-## 📦 Docker Image
+### 📦 Docker Image
 
 The application is published as a Docker image on Docker Hub:
 
 👉 [Docker Hub – anoopjaiswaldocker/innoscripta_news](https://hub.docker.com/r/anoopjaiswaldocker/innoscripta_news)
 
----
-
-## 🐳 Running the App in a Docker Container
 
 Follow these steps to run the app using Docker:
 
@@ -113,7 +112,6 @@ Follow these steps to run the app using Docker:
 - Ensure **Docker Engine** is installed and running on your system.  
   👉 [Install Docker](https://docs.docker.com/get-docker/)
 
----
 
 ### 🚀 Steps to Run
 
